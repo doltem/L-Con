@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+        
+        <link href="style/kendo.mobile.flat.min.css" rel="stylesheet" />
+        <link href="style/kendo.mobile.export.css" rel="stylesheet" />
+        <link href="style/kendo.common.min.css" rel="stylesheet" />
+        <link href="style/kendo.default.min.css" rel="stylesheet" />
+        <link href="style/HMI.css" rel="stylesheet" />
+        
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div data-role="layout" data-id="default">
+        <header data-role="header">
+        <div data-role="navbar"  id="mainnavbar">
+            <span data-role="view-title"  id="maintitle"></span>
+        </div>
+        </header>
+
+        <footer data-role="footer" data-id="default">
+        <div data-role="tabstrip">
+            <a href="#home" data-icon="home">Home</a>
+            <a href="#event" data-icon="bookmarks">Events</a>
+            <a href="#about" data-icon="info">About</a>
+        </div>
+        </footer>
+        </div>
+
+        <div data-role="layout" data-id="startupscreen">
+            <header></header>
+            <footer></footer>
+        </div>
+
+        <!--/////////////////////////////////STARTUP SCREEN VIEW//////////////////////////--> 
+        <div data-url="/" data-role="view" id="startup" data-layout="startupscreen">
+            <section id="startupcontent">
+                <section id="startuplogo"><span style="color : #10c4b2;font-weight: bold;">L</span>-Con</section>
+                <section id="startuplogoborder"></section>
+                <section id="startuplogo2"><span>Lighting Automation System</span></section>
+                <section  id="enterbuttonsection"><a data-role="button" href="#home" id="enterbutton" style="background-color: #4c5356">ENTER</a>
+            </section>
+
+        </div>
+
+    <!-- ////////////////////////////////DEVICE LIST VIEW/////////////////////////////// -->
+        <div data-title="Device List" data-role="view" id="home" data-layout="default" data-model="areaModel" data-init="viewInit" data-show="deviceViewActive">
+            <ul data-role="listview" data-style="inset">
+                <li id="areaselect-list">
+                    <span data-bind="text: area" id="areaname" class="currentoption"></span>
+                    <a data-role="button" data-rel="modalview" href="#modalview-area" id="modalarea-open-button" class="optionbutton">Select Area</a>
+                </li>
+            </ul>
+            <!-- ////////////////////select area MODAL//////////////////////////////////-->       
+            <div data-role="modalview" id="modalview-area" style="width: 80%;height :30%;">
+                <div data-role="header">
+                    <div data-role="navbar" id="areamodalnavbar">
+                        <span class="modaltitle">Select Area</span>
+                        <a data-click="closeModalArea" data-role="button" data-align="right" id="areacancelbutton">Cancel</a>
+                    </div>
+                </div>
+                <!-- ////////////////////////////area list/////////////////////////////////-->      
+                <ul
+                    id="arealist"
+                    class="item-list"
+                    data-type="flat"
+                    data-role="listview"
+                    data-template="areaitem-template"
+                    data-bind="source: areaSource, events: {click: onSelect}"
+                ></ul>
+
+            </div>
+            <!-- ////////////////////////////device list//////////////////////////////// -->  
+            <ul
+                id="devicelist"
+                class="item-list"
+                data-style="inset"
+                data-type="flat"
+                data-role="listview"
+                data-template="deviceitem-template"
+                data-bind="source: deviceSource"
+            ></ul>
+        </div>
+
+        <!-- ///////////////////////device status VIEW//////////////////// --> 
+        <div data-title="Device Status" data-role="view" id="status" data-layout="default" data-init="setFilter" data-model="zoneModel" data-show="statusViewActive">
+
+            <header data-role="header">
+                <div data-role="navbar" id="statusnavbar" >
+                    <a data-role="backbutton" data-align="left" id="backbutton">Back</a>
+                    <span data-role="view-title" id="statustitle"></span>
+                </div>
+            </header>
+
+            <ul data-role="listview" data-style="inset" >
+                <li id="zoneselect-list">
+                    <span data-bind="text: alias" class="currentoption"></span>
+                    <a data-role="button" data-rel="modalview" href="#modalview-zone" class="optionbutton" id="modalzone-open-button" >Select Zone</a> 
+                </li>
+            </ul>
+
+            <!-- //////////////////////////////zone select MODAL///////////////// --> 
+            <div data-role="modalview" id="modalview-zone" style="width: 80%;height :30%;">
+                <div data-role="header">
+                    <div data-role="navbar" id="zonemodalnavbar">
+                        <span class="modaltitle">Select Zone</span>
+                        <a data-click="closeModalZone" data-role="button" data-align="right" id="zonecancelbutton">Cancel</a>
+                    </div>
+                </div>
+                <!-- ///////////////////////////zone list////////////////////////////--> 
+                <ul
+                    id="zonelist"
+                    class="item-list"      
+                    data-type="flat"
+                    data-role="listview"
+                    data-template="zoneitem-template"
+                    data-bind="source: zoneSource, events: {click: onSelect}"
+                ></ul>
+
+            </div>
+
+            <!-- ////////////////////device status form///////////////////////////--> 
+            <ul data-role="listview" data-style="inset" data-type="group">
+                <li class="listheading">
+                    Status
+                    <ul>
+                        <li >
+                            Occupancy<span class="statusvalue">
+                                <span data-bind="text: occ"></span>
+                            </span>
+                        </li>
+                        <li>
+                            Lighting Level<span class="statusvalue"> 
+                                <span data-bind="text: lux"></span>
+                                <span> lux</span>
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Setting
+                    <ul>
+                        <li>Lamp 
+                            <input type="checkbox" data-role="switch" data-bind="checked: lamp, events: { change: onChange }">
+                        </li>
+                        <li>Auto Mode 
+                            <input type="checkbox" data-role="switch" data-bind="checked: mode, events: { change: onChange }">
+                        </li>
+                        <li>Set Point <input 
+                            id="setpoint-input"
+                            class="textinput"
+                            type="text" 
+                            data-bind="value : setpoint, events: { change: onChange }"/></li>
+                        <li>Errorband <input 
+                            class="textinput"
+                            type="text"  
+                            data-bind="value : errorband,events: { change: onChange }"/>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- //////////////////////EVENT VIEW////////////////////////////////////////// --> 
+        <div data-title="Events" data-role="view" id="event" data-layout="default" data-model="eventModel">
+            <ul
+                id="eventlist"
+                data-type="flat"
+                data-role="listview"
+                data-template="eventitem-template"
+                data-bind="source: eventSource"
+            ></ul>
+        </div>
+
+        <!-- ////////////////////ABOUT VIEW///////////////////////////--> 
+        <div data-title="About" data-role="view" id="about" data-layout="default" >
+            <div class="aboutblock">
+                <div class="aboutdetails">
+                    <strong class="abouttitle">L-Con System</strong></br></br>
+                    UI v1 - 2014</br>
+                    Created By Alkindi Rizky</br>
+                    Institut Teknologi Bandung</br>
+                    BBIC - Smart Energy Cluster
+                </div>
+            </div>
+        </div>
+
+        <!-- ////////////////////EVENT LIST TEMPLATE///////////////////////////--> 
+        <script type="text/x-kendo-template" id="eventitem-template">
+            <strong class="eventstatus" data-bind="text: status"></strong><strong class="eventtimestamp" data-bind="text: timestamp"></strong>
+            <div class="eventdetail">
+                <span data-bind="text: grup"></span></br>
+                <span data-bind="text: location"></span></br>
+                Zone <span data-bind="text: zone"></span></br>
+            </div>
+        </script>
+
+        <!-- ////////////////////DEVICE LIST TEMPLATE///////////////////////////--> 
+        <script type="text/x-kendo-template" id="deviceitem-template">
+                <a
+                class="details-link"
+                data-role="listview-link"
+                href="\#status?address=#:address#">
+                    <strong data-bind="text: location"></strong>
+                    </br>
+                    <span data-bind="text: address"></span>
+                </a>
+        </script>
+
+        <!-- ////////////////////AREA LIST TEMPLATE///////////////////////////--> 
+        <script type="text/x-kendo-template" id="areaitem-template">
+            <a data-bind="text: area"></a>
+        </script>
+
+        <!-- ////////////////////ZONE LIST TEMPLATE///////////////////////////--> 
+        <script type="text/x-kendo-template" id="zoneitem-template">
+            <a data-bind="text: alias"></a>
+        </script>
+        
+        <!-- ////////////////////SCRIPT LOAD///////////////////////////--> 
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/kendo.all.min.js"></script>
+        <script src="app/HMI.js"></script>
+
+        <script>
+            app = new kendo.mobile.Application($(document.body), { transition: "slide",
+                skin: "flat",
+                loading:false
+             });
+        </script>
+        
+        
+    </body>
+</html>

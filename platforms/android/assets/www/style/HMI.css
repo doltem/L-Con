@@ -1,0 +1,141 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 21, 2014, 2:25:21 PM
+    Author     : A.R. Dzulqarnain
+*/
+
+
+.currentoption{
+    font-size:1.4em;
+    font-family: HelveticaNeue, Roboto, 'Myriad Pro', 'Nokia Pure', Arial, sans-serif;
+    font-weight: bold;
+}
+
+
+.optionbutton{ 
+    top:-0.03em;
+    position: absolute;
+    right: 0.1em;
+}
+
+
+
+#areaselect-list, #zoneselect-list{
+    background-color : transparent;
+    border:0px;
+}
+
+.statusvalue{
+    float:right;
+}
+
+.modaltitle{
+    float:left;
+    margin-left:.5em;
+    font-size:0.75em;
+    color:#FFF;
+}
+
+#mainnavbar, #statusnavbar ,#areamodalnavbar,#zonemodalnavbar {
+    background-color: #4c5356;
+    border-bottom-style:solid;
+    border-bottom-color:#10c4b2;
+    border-bottom-width:0.15em;
+}
+
+#maintitle, #statustitle, #backbutton, #zonecancelbutton,#areacancelbutton{
+    color:#FFF;
+    font-style: normal;
+}
+
+.eventstatus{
+    float:left;
+    font-size:0.8em;
+}
+
+.eventtimestamp{
+    float:right;
+    font-size:0.8em;
+}
+
+.eventdetail{
+    clear:both;
+    margin-top:2em;
+    margin-left:0.7em;
+    font-size:0.6em;
+}
+
+.aboutblock{
+    display: table;
+    margin: 0 auto;
+    width:300px;
+    height: 500px;
+}
+
+.abouttitle{
+    font-size:2em;
+}
+
+.aboutdetails{
+    padding: 50% 0;
+    margin: 0 auto;
+    text-align:center;
+    font-size:0.75em;
+}
+
+#startuplogo{
+    font-size:4.4em;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    color:#4c5356;
+    text-align: center;
+    height:1em;
+}
+
+#startuplogoborder{
+	margin-top:0.4em;
+    width : 11.2em;
+    height: 0px;
+    border-bottom-style:solid;
+    border-bottom-color:#10c4b2;
+    border-bottom-width:0.15em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#startuplogo2{
+	margin-top:0.5em;
+    font-size:0.899em;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    color:#4c5356;
+    text-align: center;
+}
+
+#enterbuttonsection{
+    text-align: center;
+    margin-top: 2.4em;
+}
+
+#enterbutton{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:white;
+    width:11.16em;
+}
+
+
+#startup .km-content{
+}
+
+
+div .km-scroll-container{
+    height:568px;
+}
+#startupcontent{
+    padding: 55% 0;
+    width:100%;
+}
+
+

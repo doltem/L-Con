@@ -1,0 +1,16 @@
+.km-flat .km-view .km-navbar {
+    font-family: HelveticaNeue, Roboto, 'Myriad Pro', 'Nokia Pure', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: normal;
+    text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+}
+.km-flat .km-view .km-content {
+    font-family: HelveticaNeue, Roboto, 'Myriad Pro', 'Nokia Pure', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: normal;
+    text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+}
