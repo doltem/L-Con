@@ -1,23 +1,54 @@
 //==================================VARIABLES====================================
-var host="http://192.168.0.106";
+var host="http://localhost";
 //==================================MODELS===================================
+//model fore Setting View
+var settingModel = kendo.observable({
+    host:"http://tes",
+
+    onChange: function (e){
+        areaModel.set("areaSource.options.transport.read.url",this.host+"/service/area");
+        areaModel.set("areaSource.options.transport.create.url",this.host+"/service/area");
+        areaModel.set("areaSource.options.transport.update.url",this.host+"/service/area");
+        areaModel.areaSource.read();
+        
+        areaModel.set("deviceSource.options.transport.read.url",this.host+"/service/location");
+        areaModel.set("deviceSource.options.transport.update.url",this.host+"/service/location");
+        areaModel.deviceSource.read();
+        
+        zoneModel.set("zoneSource.options.transport.read.url",this.host+"/service/zone");
+        zoneModel.set("zoneSource.options.transport.update.url",this.host+"/service/zone");
+        zoneModel.zoneSource.read();
+        
+        zoneModel.set("statusSource.options.transport.read.url",this.host+"/service/zone");
+        zoneModel.statusSource.read();
+        
+        zoneModel.set("commandSource.options.transport.create.url",this.host+"/service/zone");
+        
+        eventModel.set("eventSource.options.transport.read.url",this.host+"/service/event");
+        eventModel.eventSource.read();
+        
+        console.log(areaModel.areaSource.options.transport.read.url);
+    }
+});
+
+
 //Model for Area Dropdown List
 var areaModel = kendo.observable({
     area: "Tes",
     areaSource: new kendo.data.DataSource({
       transport: {
         read: {
-          url: host+"/service/area",
+          url: settingModel.host+"/service/area",
           dataType: "json",
           type: "GET"
         },
         create: {
-          url: host+"/service/area",
+          url: settingModel.host+"/service/area",
           dataType: "json",
           type: "POST"
         },
         update:{
-          url: host+"/service/area",
+          url: settingModel.host+"/service/area",
           dataType: "json",
           type: "PUT"          
         }
@@ -36,12 +67,12 @@ var areaModel = kendo.observable({
     deviceSource: new kendo.data.DataSource({
       transport: {
         read: {
-          url: host+"/service/location",
+          url: settingModel.host+"/service/location",
           dataType: "json",
           type: "GET"
         },
         update:{
-          url: host+"/service/location",
+          url: settingModel.host+"/service/location",
           dataType: "json",
           type: "PUT"          
         }
@@ -95,12 +126,12 @@ var zoneModel = kendo.observable({
     zoneSource: new kendo.data.DataSource({
       transport: {
         read: {
-          url: host+"/service/zone",
+          url: settingModel.hostt+"/service/zone",
           dataType: "JSON",
           type: "GET"
         },
         update:{
-          url: host+"/service/zone",
+          url: settingModel.host+"/service/zone",
           dataType: "JSON",
           type: "PUT"          
         }
@@ -123,7 +154,7 @@ var zoneModel = kendo.observable({
       schema: { model: {} },
       transport: {
         read: {
-          url: host+"/service/zone",
+          url: settingModel.host+"/service/zone",
           dataType: "JSON",
           type: "GET"
         }
@@ -148,7 +179,7 @@ var zoneModel = kendo.observable({
       schema: { model: {} },
       transport: {
         create:{
-          url: host+"/service/zone",
+          url: settingModel.host+"/service/zone",
           dataType: "JSON",
           type: "POST"          
         }
@@ -190,7 +221,12 @@ var zoneModel = kendo.observable({
       this.setStatusFilter(data);
       $("#modalview-zone").data("kendoMobileModalView").close();
     },
-
+    
+    onChangeLamp: function(){
+        this.set("mode",false);
+        this.onChange();
+    },
+    
     onChange: function(){
       zoneModel.onCommand=1;
       console.log("onChange")
@@ -230,7 +266,7 @@ var eventModel = kendo.observable({
       }, ??????*/
       transport: {
         read: {
-          url: host+"/service/event",
+          url: settingModel.host+"/service/event",
           dataType: "JSON",
           type: "GET"
         }        

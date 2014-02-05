@@ -44,6 +44,7 @@
         <div data-role="tabstrip">
             <a href="#home" data-icon="home">Home</a>
             <a href="#event" data-icon="bookmarks">Events</a>
+            <a href="#setting" data-icon="settings">Setting</a>
             <a href="#about" data-icon="info">About</a>
         </div>
         </footer>
@@ -105,7 +106,7 @@
         </div>
 
         <!-- ///////////////////////device status VIEW//////////////////// --> 
-        <div data-title="Device Status" data-role="view" id="status" data-layout="default" data-init="setFilter" data-model="zoneModel" data-show="statusViewActive">
+        <div data-title="Device Status" data-role="view" id="status" data-layout="default" data-show="setFilter" data-model="zoneModel">
 
             <header data-role="header">
                 <div data-role="navbar" id="statusnavbar" >
@@ -163,17 +164,17 @@
                     Setting
                     <ul>
                         <li>Lamp 
-                            <input type="checkbox" data-role="switch" data-bind="checked: lamp, events: { change: onChange }">
+                            <input type="checkbox" data-role="switch" data-bind="checked: lamp, events: { change: onChangeLamp }">
                         </li>
                         <li>Auto Mode 
                             <input type="checkbox" data-role="switch" data-bind="checked: mode, events: { change: onChange }">
                         </li>
-                        <li>Set Point <input 
+                        <li>Set Point (lux)<input 
                             id="setpoint-input"
                             class="textinput"
                             type="text" 
                             data-bind="value : setpoint, events: { change: onChange }"/></li>
-                        <li>Errorband <input 
+                        <li>Errorband (lux)<input 
                             class="textinput"
                             type="text"  
                             data-bind="value : errorband,events: { change: onChange }"/>
@@ -192,6 +193,22 @@
                 data-template="eventitem-template"
                 data-bind="source: eventSource"
             ></ul>
+        </div>
+        
+        <!-- ////////////////////device setting form///////////////////////////--> 
+        <div data-title="Setting" data-role="view" id="setting" data-layout="default" data-model="settingModel">
+            <ul data-role="listview" data-style="inset" data-type="group">
+                <li>
+                    Network
+                    <ul>
+                        <li>Host Address<input 
+                            id="setting-host"
+                            class="textinput"
+                            type="text" 
+                            data-bind="value : host, events: { change: onChange }"/></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
         <!-- ////////////////////ABOUT VIEW///////////////////////////--> 
@@ -248,7 +265,8 @@
         <script>
             app = new kendo.mobile.Application($(document.body), { transition: "slide",
                 skin: "flat",
-                loading:false
+                loading:false,
+                useNativeScrolling: true
              });
         </script>
         

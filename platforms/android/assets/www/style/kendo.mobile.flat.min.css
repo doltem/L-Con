@@ -2723,13 +2723,14 @@ body:before {
     border: 1px solid #000;
 }
 
+/*for editingtex input style*/
 .km-flat .km-list input[type=password],.km-flat .km-list input[type=search],.km-flat .km-list input[type=number],.km-flat .km-list input[type=tel],.km-flat .km-list input[type=url],.km-flat .km-list input[type=email],.km-flat .km-list input[type=month],.km-flat .km-list input[type=color],.km-flat .km-list input[type=week],.km-flat .km-list input[type=date],.km-flat .km-list input[type=time],.km-flat .km-list input[type=datetime],.km-flat .km-list input[type=datetime-local],.km-flat .km-list input[type=text]:not(.k-input),.km-flat .km-list select:not([multiple]),.km-flat .km-list .k-dropdown-wrap,.km-flat .km-list textarea {
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
     font-size: 1.1rem;
     color: #4c5356;
-    width: 4em;
+    width: 10em;
     border: 0;
     right:0.85em;
     padding: .4em;
