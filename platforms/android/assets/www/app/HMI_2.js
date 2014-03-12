@@ -1,11 +1,9 @@
 //==================================VARIABLES====================================
 var host="http://localhost";
-var start=0;
-var end=0;
 //==================================MODELS===================================
 //model fore Setting View
 var settingModel = kendo.observable({
-    host:"http://localhost",
+    host:"http://167.205.45.178",
 
     onChange: function (e){
         areaModel.set("areaSource.options.transport.read.url",this.host+"/service/area");
@@ -66,18 +64,7 @@ var scheduleModel = kendo.observable({
         }
       },
       
-      group: { field: "zone" },
-      
-      requestStart: function (e){
-        console.log("areaSource request START");
-        //start=Date.now();
-      },
-
-      requestEnd: function (e){
-        //end=Date.now();
-        //console.log("Delay pengambilan schedule : "+(end-start));
-      }
-
+      group: { field: "zone" }
 
     }),
     
@@ -89,17 +76,7 @@ var scheduleModel = kendo.observable({
           dataType: "json",
           type: "POST"
         }
-      },
-      requestStart: function (e){
-        console.log("areaSource request START");
-        //start=Date.now();
-      },
-
-      requestEnd: function (e){
-        //end=Date.now();
-        //console.log("Delay Pembuatan Schedule : "+(end-start));
       }
-
     }),
     
     zoneSource : new kendo.data.DataSource({}),
@@ -191,12 +168,10 @@ var areaModel = kendo.observable({
 
       requestStart: function (e){
         console.log("areaSource request START");
-        //start=Date.now();
       },
 
       requestEnd: function (e){
-        //end=Date.now();
-        //console.log("Delay List Area : "+(end-start));
+        //console.log("areaSource request END");
       }
 
     }),
@@ -216,15 +191,12 @@ var areaModel = kendo.observable({
       },
 
       requestStart: function (e){
-        console.log("areaSource request START");
-        //start=Date.now();
+        console.log("deviceSource request START");
       },
 
       requestEnd: function (e){
-        //end=Date.now();
-       // console.log("Delay List Perangkat : "+(end-start));
+        //console.log("deviceSource request END");
       }
-
 
     }),
     
@@ -286,15 +258,12 @@ var zoneModel = kendo.observable({
       },
 
       requestStart: function (e){
-        console.log("areaSource request START");
-        //start=Date.now();
+        console.log("zoneSource request START");
       },
 
       requestEnd: function (e){
-        //end=Date.now();
-        //console.log("Delay List Status : "+(end-start));
+        
       },
-
 
 
       filter: { field: "address", operator: "eq", value: "" }
@@ -337,15 +306,11 @@ var zoneModel = kendo.observable({
       },
 
       requestStart: function (e){
-        console.log("areaSource request START");
-        //start=Date.now();
+        console.log("zommandSource request START");
       },
 
       requestEnd: function (e){
-        //end=Date.now();
-        //console.log("Delay Pemberian Perintah : "+(end-start));
-      }
-
+      },
 
     }),
 
@@ -428,15 +393,12 @@ var eventModel = kendo.observable({
       },
 
       requestStart: function (e){
-        console.log("areaSource request START");
-        //start=Date.now();
+        console.log("eventSource request START");
       },
 
       requestEnd: function (e){
-        //end=Date.now();
-        //console.log("Delay View : "+(end-start));
+        console.log("eventSource request END");
       }
-
 
     })
 });
@@ -445,7 +407,6 @@ var eventModel = kendo.observable({
 
 
 //==================================CONTROLLER==============================
-
 
 //controller for statusview
   function setFilter(e){
@@ -499,6 +460,7 @@ var eventModel = kendo.observable({
   function closeModalZone(){
     $("#modalview-zone").kendoMobileModalView("close");
   }
+
 
 (function pollStatus(){
    setTimeout(function(){

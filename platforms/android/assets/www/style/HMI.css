@@ -24,7 +24,7 @@ and open the template in the editor.
 
 
 
-#areaselect-list, #zoneselect-list{
+#areaselect-list, #areascheduleselect-list, #zoneselect-list, #schedule-add-zoneselect, #schedule-add-buttons{
     background-color : transparent;
     border:0px;
 }
@@ -40,16 +40,23 @@ and open the template in the editor.
     color:#FFF;
 }
 
-#mainnavbar, #statusnavbar ,#areamodalnavbar,#zonemodalnavbar {
+#mainnavbar, #schedulenavbar,#statusnavbar ,#areamodalnavbar,#zonemodalnavbar,#areaschedulemodalnavbar,#schedule-add-navbar,#schedule-add-modalnavbar {
     background-color: #4c5356;
     border-bottom-style:solid;
     border-bottom-color:#10c4b2;
     border-bottom-width:0.15em;
 }
 
-#maintitle, #statustitle, #backbutton, #zonecancelbutton,#areacancelbutton{
+#maintitle, #scheduletitle, #statustitle, #schedulebackbutton, #backbutton, #zonecancelbutton,#areacancelbutton,#areaschedulecancelbutton,#schedule-add-title, #schedule-add-modalcancel{
     color:#FFF;
     font-style: normal;
+}
+
+.scheduleitem{
+    clear:both;
+    margin-top:0em;
+    margin-left:0.7em;
+    font-size:0.8em;
 }
 
 .eventstatus{
@@ -73,7 +80,7 @@ and open the template in the editor.
     display: table;
     margin: 0 auto;
     width:300px;
-    height: 500px;
+    height: 40%;
 }
 
 .abouttitle{
@@ -81,7 +88,7 @@ and open the template in the editor.
 }
 
 .aboutdetails{
-    padding: 50% 0;
+    padding: 20% 0;
     margin: 0 auto;
     text-align:center;
     font-size:0.75em;
@@ -125,6 +132,12 @@ and open the template in the editor.
     width:11.16em;
 }
 
+#enterbutton{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:white;
+    width:12em;
+}
+
 
 #startup .km-content{
 }
@@ -138,4 +151,46 @@ div .km-scroll-container{
     width:100%;
 }
 
+#schedule-list .scheduleday{
+    font-size: 0.85em;
+    line-height: 1.2em;
+    margin: .05em 1em 0 .6em;
+    width: 50%;
+}
 
+#schedule-list .schedulesetting, #schedule-list .scheduletime{
+    font-size: 0.7em;
+    line-height: 1.4em;
+    margin: .2em 1em 0 0.6em;
+    width: 50%;
+}
+
+#schedule-list .deletebutton{
+    margin-top: -1em;
+    position: absolute;
+    right: 0.8em;
+    top: 50%;
+}
+
+#schedule-list .km-listview-link::after, #addschedule .km-listview-link::after{
+    display: none;
+}
+
+#schedule-add-form .savebutton, #schedule-add-form .cancelbutton {
+    width: 30%;
+    text-align:center;
+}
+
+#schedule-add-form .savebutton{
+    float:left; 
+    margin-left:10%;
+}
+
+#schedule-add-form .cancelbutton{
+    float:right; 
+    margin-right:10%;
+}
+
+#addschedule{
+    text-align:center;
+}
