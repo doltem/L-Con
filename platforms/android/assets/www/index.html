@@ -100,7 +100,7 @@
                         </span>
                     </li>
                     <li>
-                        Temprature<span class="statusvalue"> 
+                        Temperature<span class="statusvalue"> 
                             <span data-bind="text: temp"></span>
                             <span> C</span>
                         </span>
@@ -143,12 +143,12 @@
                     <li>Auto Mode 
                         <input type="checkbox" data-role="switch" data-bind="checked: amode, events: { change: onChange }">
                     </li>
-                    <li>Set Point (lux)<input 
+                    <li>Set Point (C)<input 
                         id="setpoint-input"
                         class="textinput"
                         type="text" 
                         data-bind="value : aset, events: { change: onChange }"/></li>
-                    <li>Deadband (lux)<input 
+                    <li>Deadband (C)<input 
                         class="textinput"
                         type="text"  
                         data-bind="value : aerror,events: { change: onChange }"/>
